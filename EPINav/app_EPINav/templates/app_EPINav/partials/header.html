@@ -19,10 +19,31 @@
       </button>
 
       <!-- Links -->
+      <!-- Home -->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link{% if request.resolver_match.url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
+          </li>
+
+      <!-- Colaboradores -->
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'colaborador_list' %} active{% endif %}" href="{% url 'colaborador_list' %}">Colaboradores</a>
+          </li>
+
+       <!-- Usuario Sistema -->
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'usuario_list' %} active{% endif %}" href="{% url 'usuario_list' %}">Usuário Sistema</a>
+          </li>
+
+          <!-- Equipamentos -->
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'equipamento_list' %} active{% endif %}" href="{% url 'equipamento_list' %}">Equipamentos</a>
+          </li>
+
+          <!-- Equipamentos -->
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'emprestimo_list' %} active{% endif %}" href="{% url 'emprestimo_list' %}">Empréstimos</a>
           </li>
         </ul>
 

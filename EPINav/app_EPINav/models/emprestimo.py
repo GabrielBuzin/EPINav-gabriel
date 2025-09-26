@@ -10,7 +10,7 @@ class Emprestimo(models.Model):
     equipamento = models.ForeignKey(
         Equipamento, on_delete=models.CASCADE, related_name="emprestimos"
     )
-    data_entrega = models.DateTimeField(default=timezone.localtime)
+    data_entrega = models.DateTimeField(default=timezone.now)
     data_prevista_devolucao = models.DateTimeField()
     data_devolucao = models.DateTimeField(blank=True, null=True)
     observacao_devolucao = models.TextField(blank=True, null=True)

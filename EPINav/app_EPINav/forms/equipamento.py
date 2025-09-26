@@ -5,12 +5,13 @@ from app_EPINav.models.equipamento import Equipamento
 class EquipamentoForm(forms.ModelForm):
     class Meta:
         model = Equipamento
-        fields = ['nome', 'descricao', 'fabricante', 'estado', 'observacao']
+        fields = ['nome', 'descricao', 'fabricante', 'estado', 'quantidade', 'observacao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
             'fabricante': forms.TextInput(attrs={'class': 'form-control'}),
             'estado': forms.Select(attrs={'class': 'form-select'}),
+            'quantidade': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
             'observacao': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
         }
 

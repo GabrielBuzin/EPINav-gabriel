@@ -49,7 +49,7 @@ def criar_usuario(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Usuário criado com sucesso!")
-            return redirect("listar_usuarios")
+            return redirect("usuario_list")
     else:
         form = UsuarioSistemaForm()
     return render(request, "app_EPINav/pages/usuarioSistema/usuario_form.html", {"form": form})
@@ -65,7 +65,7 @@ def editar_usuario(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Usuário atualizado com sucesso!")
-            return redirect("listar_usuarios")
+            return redirect("usuario_list")
     else:
         form = UsuarioSistemaForm(instance=usuario)
     return render(request, "app_EPINav/pages/usuarioSistema/usuario_form.html", {"form": form, "object": usuario})
@@ -79,5 +79,5 @@ def deletar_usuario(request, pk):
     if request.method == "POST":
         usuario.delete()
         messages.success(request, "Usuário deletado com sucesso!")
-        return redirect("listar_usuarios")
-    return redirect("listar_usuarios")
+        return redirect("usuario_list")
+    return redirect("usuario_list")

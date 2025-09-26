@@ -7,7 +7,7 @@
 
 <div class="container">
   <h2>Usuários do Sistema</h2>
-  <a class="btn btn-primary" href="{% url 'criar_usuario' %}">➕ Adicionar Usuário</a>
+  <a class="btn btn-primary" href="{% url 'usuario_create' %}">➕ Adicionar Usuário</a>
 
   <table class="table mt-3">
     <thead>
@@ -23,7 +23,7 @@
           <td>{{ u.nome_usuario }}</td>
           <td>{% if u.is_admin %}✅{% else %}❌{% endif %}</td>
           <td>
-            <a href="{% url 'editar_usuario' u.pk %}" class="btn btn-sm btn-warning">Editar</a>
+            <a href="{% url 'usuario_edit' u.pk %}" class="btn btn-sm btn-warning">Editar</a>
             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ u.pk }}">Deletar</button>
 
             <!-- Modal -->
@@ -38,7 +38,7 @@
                     Tem certeza que deseja deletar <strong>{{ u.nome_usuario }}</strong>?
                   </div>
                   <div class="modal-footer">
-                    <form method="post" action="{% url 'deletar_usuario' u.pk %}">
+                    <form method="post" action="{% url 'usuario_delete' u.pk %}">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-danger">Sim, excluir</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

@@ -13,7 +13,7 @@ class EmprestimoListView(ListView):
     template_name = "app_EPINav/pages/emprestimo/emprestimo_list.html"
 
     def get_queryset(self):
-        # Se for colaborador, só mostra os dele
+        # se for colaborador, só mostra os dele
         if self.request.session.get("tipo_usuario") == "colaborador":
             return Emprestimo.objects.filter(colaborador_id=self.request.session["usuario_id"])
         return Emprestimo.objects.all()
@@ -26,7 +26,7 @@ class EmprestimoCreateView(CreateView):
     success_url = reverse_lazy('emprestimo_list')
 
     def form_valid(self, form):
-        # Preenche o colaborador automaticamente
+        # preenche o colaborador automaticamente
         from app_EPINav.models.colaborador import Colaborador
         colaborador_id = self.request.session.get('usuario_id')
         if self.request.session.get('tipo_usuario') == 'colaborador' and colaborador_id:

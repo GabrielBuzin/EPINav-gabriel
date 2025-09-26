@@ -37,10 +37,10 @@ urlpatterns = [
     path('colaboradores/<int:pk>/deletar/', ColaboradorDeleteView.as_view(), name='colaborador_delete'),
 
     # Usuários
-    path('usuarios/', listar_usuarios, name='listar_usuarios'),
-    path('usuarios/novo/', criar_usuario, name='criar_usuario'),
-    path('usuarios/<int:pk>/editar/', editar_usuario, name='editar_usuario'),
-    path('usuarios/<int:pk>/deletar/', deletar_usuario, name='deletar_usuario'),
+    path('usuarios/', listar_usuarios, name='usuario_list'),
+    path('usuarios/novo/', criar_usuario, name='usuario_create'),
+    path('usuarios/<int:pk>/editar/', editar_usuario, name='usuario_edit'),
+    path('usuarios/<int:pk>/deletar/', deletar_usuario, name='usuario_delete'),
     
     # Equipamentos
     path('equipamentos/', EquipamentoListView.as_view(), name='equipamento_list'),

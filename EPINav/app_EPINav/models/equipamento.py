@@ -12,7 +12,8 @@ class Equipamento(models.Model):
     nome = models.CharField(max_length=150, unique=True)
     descricao = models.TextField(blank=True, null=True)
     fabricante = models.CharField(max_length=100)
-    estado = models.CharField(max_length=20, choices=ESTADOS, default='emprestado')
+    estado = models.CharField(max_length=20, choices=ESTADOS, default='fornecido')
+    quantidade = models.PositiveIntegerField(default=1)
     observacao = models.TextField(blank=True, null=True)
 
     def __str__(self):
