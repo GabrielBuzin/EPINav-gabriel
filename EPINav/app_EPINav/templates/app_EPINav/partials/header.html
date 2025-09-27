@@ -41,9 +41,14 @@
             <a class="nav-link{% if request.resolver_match.url_name == 'equipamento_list' %} active{% endif %}" href="{% url 'equipamento_list' %}">Equipamentos</a>
           </li>
 
-          <!-- Equipamentos -->
+          <!-- emprestimos -->
           <li class="nav-item">
             <a class="nav-link{% if request.resolver_match.url_name == 'emprestimo_list' %} active{% endif %}" href="{% url 'emprestimo_list' %}">Empréstimos</a>
+          </li>
+
+          <!-- Relatorios -->
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'relatorios' %} active{% endif %}" href="{% url 'relatorios' %}">Relatórios</a>
           </li>
         </ul>
 

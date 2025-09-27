@@ -25,6 +25,8 @@ from app_EPINav.views.equipamento import (
  
 from app_EPINav.views import emprestimo
 
+from app_EPINav.views import relatorio
+
 urlpatterns = [
     path('', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
@@ -52,6 +54,10 @@ urlpatterns = [
     path("emprestimos/", emprestimo.EmprestimoListView.as_view(), name="emprestimo_list"),
     path("emprestimos/novo/", emprestimo.EmprestimoCreateView.as_view(), name="emprestimo_create"),
     path("emprestimos/<int:pk>/editar/", emprestimo.EmprestimoUpdateView.as_view(), name="emprestimo_update"),
+    
+    # Relatórios
+    path("relatorios/", relatorio.relatorios, name="relatorios"),
+    path("relatorios/<int:pk>/editar/", relatorio.editar_relatorio, name="relatorio_edit"),
 ]
 
 if settings.DEBUG:

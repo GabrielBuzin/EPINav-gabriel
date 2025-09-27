@@ -1,0 +1,44 @@
+{% extends "app_EPINav/base.html" %}
+{% block content %}
+{% include 'app_EPINav/partials/header.html' %}
+{% include 'app_EPINav/partials/mensagens_erro.html' %}
+
+<div class="container mt-4">
+  <h2>Editar Status do Empréstimo</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- Campos bloqueados -->
+    <div class="mb-3">
+      <label>Colaborador</label>
+      <input type="text" class="form-control" value="{{ emprestimo.colaborador.nome }}" disabled>
+    </div>
+    <div class="mb-3">
+      <label>Equipamento</label>
+      <input type="text" class="form-control" value="{{ emprestimo.equipamento.nome }}" disabled>
+    </div>
+    <div class="mb-3">
+      <label>Data do Empréstimo</label>
+      <input type="text" class="form-control" value="{{ emprestimo.data_entrega|date:'d/m/Y H:i' }}" disabled>
+    </div>
+    <div class="mb-3">
+      <label>Data Prevista da Devolução</label>
+      <input type="text" class="form-control" value="{{ emprestimo.data_prevista_devolucao|date:'d/m/Y H:i' }}" disabled>
+    </div>
+
+    <!-- apenas status editável -->
+    <div class="mb-3">
+      <label>Status</label>
+      {{ form.estado }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'relatorios' %}" class="btn btn-secondary">Voltar</a>
+  </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'app_EPINav/partials/footer.html' %}
+{% endblock %}

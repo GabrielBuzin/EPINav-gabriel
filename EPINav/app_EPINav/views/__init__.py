@@ -16,3 +16,5 @@ from .usuarioSistema import (
 from .auth import *
 
 from .decorators import *
+
+from .equipamento import *
