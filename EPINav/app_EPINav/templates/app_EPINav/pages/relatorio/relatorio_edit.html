@@ -9,7 +9,6 @@
   <form method="post">
     {% csrf_token %}
 
-    <!-- Campos bloqueados -->
     <div class="mb-3">
       <label>Colaborador</label>
       <input type="text" class="form-control" value="{{ emprestimo.colaborador.nome }}" disabled>

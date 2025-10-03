@@ -5,7 +5,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 from app_EPINav.models.emprestimo import Emprestimo
 from app_EPINav.forms.emprestimo import EmprestimoForm
-from app_EPINav.views.decorators import login_required_custom
+from app_EPINav.views.decorators import login_required_custom , block_admin_access
 
 @method_decorator(login_required_custom, name="dispatch")
 class EmprestimoListView(ListView):
@@ -19,6 +19,7 @@ class EmprestimoListView(ListView):
         return Emprestimo.objects.all()
 
 @method_decorator(login_required_custom, name="dispatch")
+@method_decorator(block_admin_access, name="dispatch")
 class EmprestimoCreateView(CreateView):
     model = Emprestimo
     form_class = EmprestimoForm
@@ -26,7 +27,6 @@ class EmprestimoCreateView(CreateView):
     success_url = reverse_lazy('emprestimo_list')
 
     def form_valid(self, form):
-        # preenche o colaborador automaticamente
         from app_EPINav.models.colaborador import Colaborador
         colaborador_id = self.request.session.get('usuario_id')
         if self.request.session.get('tipo_usuario') == 'colaborador' and colaborador_id:
@@ -35,6 +35,7 @@ class EmprestimoCreateView(CreateView):
 
 
 @method_decorator(login_required_custom, name="dispatch")
+@method_decorator(block_admin_access, name="dispatch")
 class EmprestimoUpdateView(UpdateView):
     model = Emprestimo
     form_class = EmprestimoForm
